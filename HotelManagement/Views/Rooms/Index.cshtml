@@ -1,0 +1,55 @@
+﻿@model List<Room>
+@{
+    ViewData["Title"] = "Index";
+}
+
+ <section class="hotel-p-100-100">
+      <div class="container">
+                  <div class="hotel-masonry-grid hotel-3-col" style="position: relative; height: 1592.34px;">
+
+            <div class="hotel-grid-sizer"></div>
+@foreach (var item in Model)
+{
+<div class="hotel-masonry-grid-item hotel-masonry-grid-item-33 @item.HotelTypeId" style="position: absolute; left: 0%; top: 0px;">
+
+            <!-- room card -->
+            
+            <div class="hotel-room-card">
+              <div class="hotel-cover-frame imgLoad">
+                <a asp-controller = "Rooms" asp-action = "Detail" asp-route-id = "@item.Id"><img class="lozad"  alt="cover" src="~/img/rooms/@item.RoomImage" data-loaded="true"></a>
+              </div>
+              <div class="hotel-description-frame">
+                <div class="hotel-room-features">
+                  <div class="hotel-feature imgLoad">
+                    <div class="hotel-icon-frame"><img class="lozad"  alt="icon" src="~/img/icons/bed.svg" data-loaded="true"></div>
+                    <span>@item.RoomCapacity</span>
+                  </div>
+                  <div class="hotel-feature imgLoad">
+                    <div class="hotel-icon-frame"><img class="lozad"  alt="icon" src="~/img/icons/square.svg" data-loaded="true"></div>
+                    <span>@item.RoomArea</span>
+                  </div>
+                </div>
+                <a href="roomSuite.html">
+                  <h3 class="hotel-mb-20">@item.RoomNo</h3>
+                </a>
+                <div class="hotel-text-light hotel-text-sm hotel-mb-20">@item.RoomDescription</div>
+                <div class="hotel-card-bottom imgLoad">
+                  <div class="hotel-price">@item.RoomPrice <span>/gecə</span></div>
+                  <a href="roomSuite.html" class="hotel-btn"><img class="lozad"  alt="icon" src="~/img/icons/bookmark.svg" data-loaded="true">Rezerv et</a>
+                </div>
+              </div>
+            </div>
+            <!-- room card end -->
+
+          </div>
+    
+}
+</div>
+</div>
+</section>
+
+
+
+
+
+

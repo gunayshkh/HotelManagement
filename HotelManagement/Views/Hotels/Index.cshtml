@@ -1,0 +1,65 @@
+﻿@model HotelIndexViewModel
+
+    <!-- rooms -->
+    <section class="hotel-p-100-100">
+      <div class="container">
+
+        <div class="hotel-filter hotel-mb-60">
+            @foreach (var item in Model.HotelTypes)
+            { 
+              <a href="#" data-filter="@item.TypeName.ToLower()" class="hotel-work-category hotel-current">@item.TypeName</a>
+            }
+          
+         
+        </div>
+
+        <div class="hotel-masonry-grid hotel-3-col">
+
+          <div class="hotel-grid-sizer"></div>
+          @foreach (var item in Model.Hotels)
+          {
+              
+          <div class="hotel-masonry-grid-item hotel-masonry-grid-item-33 @item.HotelType.TypeName.ToLower()">
+
+            <!-- room card -->
+            <div class="hotel-room-card">
+              <div class="hotel-cover-frame imgLoad">
+                <a asp-action="Index" asp-controller="Rooms" asp-route-id="@item.Id" ><img class="lozad" src="@Url.Content($"~/img/HOTEL/{@item.ImageURL}")" alt="cover"></a>  @*hotel-1.jpg*@
+              </div>
+              <div class="hotel-description-frame">
+                 
+                <ul class=" d-flex hotel-stars">
+                    @for (var i = 0; i < item.StarCount; i++)
+                    { 
+                        <li><i class=" text-warning fas fa-star"></i></li>
+                    }
+                    @for (var i = 0; i < 7-item.StarCount; i++)
+                   {
+                     <li><i class="fas fa-star"></i></li>
+
+                   }
+                  
+                </ul>
+                <a asp-action="Index" asp-controller="Rooms" asp-route-id="@item.Id" >
+                  <h3 class="hotel-mb-20">@item.Name</h3>
+                </a>
+                <div class="hotel-text-light hotel-text-sm hotel-mb-20">@item.Description</div>
+                <div class="hotel-card-bottom imgLoad">
+                  
+                  <a asp-action="Index" asp-controller="Rooms" asp-route-id="@item.Id" class="hotel-btn"><img class="lozad" data-src="/img/icons/bookmark.svg" alt="icon">Hotelə get</a>
+                </div>
+              </div>
+            </div>
+            <!-- room card end -->
+
+          </div>
+          }
+
+      
+   
+        
+        </div>
+       
+      </div>
+    </section>
+    <!-- rooms end -->
