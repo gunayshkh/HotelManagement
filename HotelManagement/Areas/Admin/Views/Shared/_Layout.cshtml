@@ -198,11 +198,11 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" asp-controller="Hotel" asp-action="Index" >Hotel List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="~/Admin/pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Hotel" asp-action="Create">Create</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+        @*  <li class="nav-item">
             <a class="nav-link" href="~/Admin/pages/forms/basic_elements.html">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Form elements</span>
@@ -247,7 +247,7 @@
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li>*@
         </ul>
       </nav>
         @RenderBody()

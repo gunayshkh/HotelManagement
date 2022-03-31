@@ -1,4 +1,5 @@
-﻿using HotelManagement.Models.DAL;
+﻿using HotelManagement.Areas.Admin.Models.ViewModels.HotelViewModels;
+using HotelManagement.Models.DAL;
 using HotelManagement.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,5 +31,36 @@ namespace HotelManagement.Areas.Admin.Controllers
             }).ToListAsync();
             return View();
         }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            var hotels = await _db.Hotels.FindAsync(id);
+            if (hotels == null) return NotFound();
+            return View(hotels);
+        }
+        public async Task<IActionResult> Create(CreateHoteViewModel model)
+        {
+            if (!ModelState.IsValid) return View();
+            Hotel hotel = new()
+            {
+                Name = model.Name,
+                Description = model.Description,
+                StarCount = model.StarCount
+            };
+
+            await _db.Hotels.AddAsync(hotel);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+        //public async Task<IActionResult> Create(int id, Hotel hotel)
+        //{
+        //    return View(new Hotel  
+        //}
+    
+
     }
 }
